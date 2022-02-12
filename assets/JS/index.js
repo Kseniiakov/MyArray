@@ -1,3 +1,5 @@
+"use strict";
+
 function MyArray() {
   this.length = 0;
 }
