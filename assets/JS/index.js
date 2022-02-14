@@ -7,7 +7,7 @@ const arrayPrototype = {
     for(let i = 0; i < this.length; i++) {
       if(this.array[i] === arg) {
         return true;
-      }
+      };
     };
     return false;
   },
@@ -27,7 +27,20 @@ const arrayPrototype = {
       this.length++;
     };
     return this.length;
+  },
+
+  pop: function() {
+    for(let i = 0; i < 1; i++) {
+      if(this.length > 0) {
+        let last = this.array[this.length-1];
+        delete this.array[this.length-1];
+        this.length--;
+        return last;
+      };
+    };
+    return;
   }
+  
 };
 
 // constructor func
@@ -50,13 +63,18 @@ MyArray.isMyArray = function(arg) {
 // create instance
 const myArray = new MyArray();
 
-// push
-const resultPush = myArray.push(1,2,3);
-const resultPush2 = myArray.push('4',5,6);
-const resultPush3 = myArray.push('7',8,9,10);
+// test push
+const resultPush1 = myArray.push(1,2,3);
+const resultPush2 = myArray.push(4,5,6);
+const resultPush3 = myArray.push(7,8,9,10);
 console.log(myArray);
 // console.log(resultPush3);
 
+// test pop
+
+const resultPop = myArray.pop();
+console.log(resultPop);
+
 // test indexOf
-const result = myArray.indexOf(11);
-console.log(result);
+// const result = myArray.indexOf(10);
+// console.log(result);
