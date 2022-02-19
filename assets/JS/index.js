@@ -72,7 +72,7 @@ const arrayPrototype = {
 
     for(let i = 0; i < value.length; i++) {
       let valueArr = value[i];
-      if(valueArr instanceof MyArray) {
+      if(MyArray.isMyArray(valueArr)) {
         for(let j = 0; j < valueArr.length; j++) {
           concatArr.push(valueArr.array[j]);
         }
@@ -82,7 +82,16 @@ const arrayPrototype = {
       }
     }
     return concatArr;
-  }
+  },
+
+  unshift: function(...elem) {
+    for(let i = 0; i < elem.length; i++) {
+      this.array[i++]
+      this.array[i] = elem[i];
+      this.length++;
+    };
+    return this.length;
+  },
   
 };
 
@@ -127,7 +136,6 @@ console.log(myArray);
 // console.log(myNewArray);
 
 // test concat
-
 // const concatMyArray = new MyArray();
 // concatMyArray.push('1','2','3');
 
