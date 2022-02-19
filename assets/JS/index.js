@@ -39,7 +39,17 @@ const arrayPrototype = {
       };
     };
     return;
-  }
+  },
+
+  slice: function(begin = 0, end = this.length) {
+    const newArr = new MyArray();
+    if(begin > 0 && begin < this.length) {
+      for(let i = begin; i < end; i++) {
+        newArr.push(this.array[i]);
+      }
+    }
+    return newArr;
+  },
   
 };
 
@@ -71,10 +81,15 @@ console.log(myArray);
 // console.log(resultPush3);
 
 // test pop
-
-const resultPop = myArray.pop();
-console.log(resultPop);
+// const resultPop = myArray.pop();
+// console.log(resultPop);
+// const resultPop2 = myArray.pop();
+// console.log(resultPop2);
 
 // test indexOf
 // const result = myArray.indexOf(10);
 // console.log(result);
+
+// test slice
+const myNewArray = myArray.slice(1,5);
+console.log(myNewArray);
