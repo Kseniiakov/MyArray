@@ -69,11 +69,16 @@ const arrayPrototype = {
     for(let i = 0; i < this.length; i++) {
       concatArr.push(this.array[i]);
     }
-    debugger
+
     for(let i = 0; i < value.length; i++) {
       let valueArr = value[i];
-      for(i = 0; i < valueArr.length; i++) {
-        concatArr.push(valueArr.array[i]);
+      if(valueArr instanceof MyArray) {
+        for(let j = 0; j < valueArr.length; j++) {
+          concatArr.push(valueArr.array[j]);
+        }
+      }
+      else {
+        concatArr.push(valueArr);
       }
     }
     return concatArr;
@@ -123,14 +128,15 @@ console.log(myArray);
 
 // test concat
 
-const concatMyArray = new MyArray();
-concatMyArray.push('1','2','3');
+// const concatMyArray = new MyArray();
+// concatMyArray.push('1','2','3');
 
-const concatMyArray3 = new MyArray();
-concatMyArray3.push('a', 'b', 'c');
+// const concatMyArray3 = new MyArray();
+// concatMyArray3.push('a', 'b', 'c');
 
-console.log(concatMyArray3);
+// const concatMyArray4 = new MyArray();
+// concatMyArray4.push(20,30,40,50,60,70);
 
-const concatResult = myArray.concat(concatMyArray, concatMyArray3);
+// const concatResult = myArray.concat(concatMyArray, concatMyArray3, concatMyArray4, 100, 'my name');
 
-console.log(concatResult);
+// console.log(concatResult);
