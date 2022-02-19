@@ -43,13 +43,41 @@ const arrayPrototype = {
 
   slice: function(begin = 0, end = this.length) {
     const newArr = new MyArray();
-    if(begin > 0 && begin < this.length) {
-      for(let i = begin; i < end; i++) {
+    if(begin >= 0 && begin < this.length) {
+      if(end > 0) {
+        for(let i = begin; i < end; i++) {
+          newArr.push(this.array[i]);
+        }
+      }
+      else if(end < 0) {
+        for(let i = begin; i < (this.length + end); i++) {
+          newArr.push(this.array[i]);
+        }  
+      }
+    }
+    else if(begin < 0) {
+      for(let i = this.length + (begin); i < this.length; i++) {
         newArr.push(this.array[i]);
       }
     }
     return newArr;
   },
+
+  concat: function(...value) {
+    const concatArr = new MyArray();
+
+    for(let i = 0; i < this.length; i++) {
+      concatArr.push(this.array[i]);
+    }
+    debugger
+    for(let i = 0; i < value.length; i++) {
+      let valueArr = value[i];
+      for(i = 0; i < valueArr.length; i++) {
+        concatArr.push(valueArr.array[i]);
+      }
+    }
+    return concatArr;
+  }
   
 };
 
@@ -74,9 +102,8 @@ MyArray.isMyArray = function(arg) {
 const myArray = new MyArray();
 
 // test push
-const resultPush1 = myArray.push(1,2,3);
-const resultPush2 = myArray.push(4,5,6);
-const resultPush3 = myArray.push(7,8,9,10);
+myArray.push(1,2,3);
+myArray.push(4,5);
 console.log(myArray);
 // console.log(resultPush3);
 
@@ -91,5 +118,19 @@ console.log(myArray);
 // console.log(result);
 
 // test slice
-const myNewArray = myArray.slice(1,5);
-console.log(myNewArray);
+// const myNewArray = myArray.slice(0,-3);
+// console.log(myNewArray);
+
+// test concat
+
+const concatMyArray = new MyArray();
+concatMyArray.push('1','2','3');
+
+const concatMyArray3 = new MyArray();
+concatMyArray3.push('a', 'b', 'c');
+
+console.log(concatMyArray3);
+
+const concatResult = myArray.concat(concatMyArray, concatMyArray3);
+
+console.log(concatResult);
