@@ -1,7 +1,4 @@
 "use strict";
-// ==============
-// посмотреть pop
-// ==============
 
 // prototype obj
 const arrayPrototype = {
@@ -104,9 +101,50 @@ const arrayPrototype = {
         this.array[i] = this.array[i+1];
       }
       delete this.array[this.length-1];
-      this.length--
+      this.length--;
       return first;
     };
+  },
+
+  reverse: function() {
+    for(let i = 0; i < Math.trunc(this.length / 2); i++) {
+      let buffer = this.array[i];
+      this.array[i] = this.array[(this.length - 1) - i];
+      this.array[(this.length - 1) - i] = buffer;
+    }
+    return this;
+  },
+
+  splice: function(start, deleteCount = 0, ...item) {
+    console.log(start + item.length);
+    if(start <= this.length && start > 0) {
+      if(deleteCount === 0) {
+        for(let i = start; i < this.length; i++) {
+          
+        }
+      }
+      else if(deleteCount > 0) {
+        if(typeof item[0] !== 'undefiend') {
+          if(item.length < deleteCount) {
+            for(let i = start; i < start + item.length; i++) {
+              this.array[i] = item[item.length-1];
+            }
+            for(let j = start + item.length; j <= start+deleteCount; j++) {
+              this.array[j] = this.array[j+1];
+            }
+            delete this.array[this.length-1];
+            this.length--;
+          }
+          
+        }
+        else {
+          for(let i = start; i < start + deleteCount; i++) {
+            this.array[i] = this.array[i+deleteCount];
+            delete this.array[i+deleteCount];
+          }
+        }
+      }
+    }
   }
   
 };
@@ -136,7 +174,6 @@ const myArray = new MyArray();
 myArray.push(1,2,3);
 myArray.push(4,5,6);
 console.log(myArray);
-// console.log(resultPush3);
 
 // ------------------------ test pop --------------------------------------------
 
@@ -179,3 +216,12 @@ console.log(myArray);
 // test shift
 // const result = myArray.shift();
 // console.log(result);
+
+// ------------------------ test reverse ----------------------------------------
+
+// const result = myArray.reverse();
+// console.log(result);
+
+// ------------------------ test splice -----------------------------------------
+
+myArray.splice(2,2,'test');
