@@ -33,15 +33,12 @@ const arrayPrototype = {
   },
 
   pop: function() {
-    for(let i = 0; i < 1; i++) { //возможно можно убрать цикл...
-      if(this.length > 0) {
-        let last = this.array[this.length-1];
-        delete this.array[this.length-1];
-        this.length--;
-        return last;
-      };
+    if(this.length > 0) {
+      let last = this.array[this.length-1];
+      delete this.array[this.length-1];
+      this.length--;
+      return last;
     };
-    return;
   },
 
   slice: function(begin = 0, end = this.length) {
@@ -134,15 +131,15 @@ MyArray.isMyArray = function(arg) {
 // create instance
 const myArray = new MyArray();
 
-// ------------------------------------------------------------------------------
-// test push
+// ----------------------- test push --------------------------------------------
+
 myArray.push(1,2,3);
 myArray.push(4,5,6);
 console.log(myArray);
 // console.log(resultPush3);
 
-// ------------------------------------------------------------------------------
-// test pop
+// ------------------------ test pop --------------------------------------------
+
 // const resultPop = myArray.pop();
 // console.log(resultPop);
 // const resultPop2 = myArray.pop();
@@ -175,12 +172,10 @@ console.log(myArray);
 
 // ------------------------------------------------------------------------------
 // test unshift
-
 // const result = myArray.unshift(100,200,300);
 // console.log(result);
 
 // ------------------------------------------------------------------------------
 // test shift
-
-const result = myArray.shift();
-console.log(result);
+// const result = myArray.shift();
+// console.log(result);
