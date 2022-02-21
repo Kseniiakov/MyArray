@@ -3,9 +3,9 @@
 // prototype obj
 const arrayPrototype = {
   // Class.prototype.includes
-  includes: function (arg) {
-    for(let i = 0; i < this.length; i++) {
-      if(this.array[i] === arg) {
+  includes: function (searchElement, fromIndex = 0) {
+    for(let i = fromIndex; i < this.length; i++) {
+      if(this.array[i] === searchElement) {
         return true;
       };
     };
