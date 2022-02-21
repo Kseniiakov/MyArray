@@ -113,41 +113,8 @@ const arrayPrototype = {
       this.array[(this.length - 1) - i] = buffer;
     }
     return this;
-  },
-
-  splice: function(start, deleteCount = 0, ...item) {
-    console.log(start + item.length);
-    if(start <= this.length && start > 0) {
-      if(deleteCount === 0) {
-        for(let i = start; i < this.length; i++) {
-          
-        }
-      }
-      else if(deleteCount > 0) {
-        if(typeof item[0] !== 'undefiend') {
-          if(item.length < deleteCount) {
-            for(let i = start; i < start + item.length; i++) {
-              this.array[i] = item[item.length-1];
-            }
-            for(let j = start + item.length; j <= start+deleteCount; j++) {
-              this.array[j] = this.array[j+1];
-            }
-            delete this.array[this.length-1];
-            this.length--;
-          }
-          
-        }
-        else {
-          for(let i = start; i < start + deleteCount; i++) {
-            this.array[i] = this.array[i+deleteCount];
-            delete this.array[i+deleteCount];
-          }
-        }
-      }
-    }
   }
-  
-};
+}
 
 // constructor func
 function MyArray() {
@@ -182,18 +149,18 @@ console.log(myArray);
 // const resultPop2 = myArray.pop();
 // console.log(resultPop2);
 
-// ------------------------------------------------------------------------------
-// test indexOf
+// ------------------------ test indexOf ----------------------------------------
+
 // const result = myArray.indexOf(10);
 // console.log(result);
 
-// ------------------------------------------------------------------------------
-// test slice
+// ------------------------ test slice ------------------------------------------
+
 // const myNewArray = myArray.slice(0,-3);
 // console.log(myNewArray);
 
-// ------------------------------------------------------------------------------
-// test concat
+// ------------------------ test concat -----------------------------------------
+
 // const concatMyArray = new MyArray();
 // concatMyArray.push('1','2','3');
 
@@ -207,13 +174,13 @@ console.log(myArray);
 
 // console.log(concatResult);
 
-// ------------------------------------------------------------------------------
-// test unshift
+// ------------------------ test unshift ----------------------------------------
+
 // const result = myArray.unshift(100,200,300);
 // console.log(result);
 
-// ------------------------------------------------------------------------------
-// test shift
+// ------------------------ test shift ------------------------------------------
+
 // const result = myArray.shift();
 // console.log(result);
 
@@ -221,7 +188,3 @@ console.log(myArray);
 
 // const result = myArray.reverse();
 // console.log(result);
-
-// ------------------------ test splice -----------------------------------------
-
-myArray.splice(2,2,'test');
